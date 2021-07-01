@@ -20,13 +20,14 @@ import java.util.Scanner;
  */
 public class Parser {
     /**
-     * @param commands holds all valid command words.
+     * holds all valid command words.
      */
-    private CommandWords commands;
+    private CommandWords commands;  // holds all valid command words
     /**
-     * @param reader source of command input
+     * source of command input.
      */
-    private Scanner reader;
+    private Scanner reader;         // source of command input
+
     /**
      * Create a parser to read from the terminal window.
      */

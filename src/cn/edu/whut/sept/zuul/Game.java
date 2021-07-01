@@ -14,7 +14,6 @@
 package cn.edu.whut.sept.zuul;
 
 public class Game {
-
     /**
      * @param parser 解析器，用来对用户输入的词汇做翻
      */
@@ -31,11 +30,9 @@ public class Game {
         createRooms();
         parser = new Parser();
 }
-
     /**
      * 创建所有房间对象并连接其出口用以构建迷宫.
      */
-
     private void createRooms() {
         Room outside;
         Room theater;
@@ -105,7 +102,7 @@ public class Game {
     private boolean processCommand(final Command command) {
 
         boolean wantToQuit = false;
-
+        /*
         if (command.isUnknown()) {
             System.out.println("I don't know what you mean...");
             return false;
@@ -120,6 +117,9 @@ public class Game {
             wantToQuit = quit(command);
         }
         // else command not recognised.
+        return wantToQuit;*/
+        String commandWord = command.getCommandWord();
+        wantToQuit = ProbableAct.valueOf(commandWord).actions(this, command);
         return wantToQuit;
 }
 
@@ -129,7 +129,7 @@ public class Game {
      * 执行help指令，在终端打印游戏帮助信息.
      * 此处会输出游戏中用户可以输入的命令列表
      */
-    private void printHelp() {
+    void printHelp() {
 
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
@@ -143,7 +143,7 @@ public class Game {
      * 否则打印输出错误提示信息.
      * @param command command是从用户输入的字符中提取出来的
      */
-    private void goRoom(final Command command) {
+    void goRoom(final Command command) {
 
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
@@ -169,7 +169,7 @@ public class Game {
      * @param command 接受的指令，由解析器生成
      * @return 如果游戏需要退出则返回true，否则返回false.
      */
-    private boolean quit(final Command command) {
+    boolean quit(final Command command) {
 
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");

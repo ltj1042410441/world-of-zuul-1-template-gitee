@@ -17,7 +17,6 @@ public class CommandWords {
     public CommandWords() {
         // nothing to do at the moment...
 }
-
     /**
      *用来判断用户的输入是否为不合法命令，只对第一个词进行了判断，不能断定是否合法.
      * @param aString 用户输入的字符串
